@@ -1,14 +1,14 @@
 # The Merlin L48 Spectrogram Dataset (L48)
 
 <p align="center">
-  <img src="fig1.png" alt="Bar plot" width="900" height="506">
+  <img src="./assets/fig1.png" alt="Bar plot" width="900" height="506">
   <br>
   <em>Figure 1: The Merlin L48 Spectrogram (L48) dataset spans the Lower 48 states of the US with bird recordings throughout the year. Each recording is associated with a target species (solid) but also contains background species (dashed), giving rise to a natural single-positive, multi-label (SPML) task. L48 stands out among similar datasets as being at country-wide, year-round scale while still maintaining high-quality bounding box annotations.</em>
 </p>
 
 ## Data Download
 
-The data can be downloaded [here](https://msid-ml48s.s3.amazonaws.com/v0/ml48s.tar.gz). For information about the data format, see the annotation format
+The data can be downloaded [here](https://msid-ml48s.s3.amazonaws.com/v0/ml48s.tar.gz). For information about the data format, see the [dataset organization section](#organization).
 
 ## Dataset Details
 | Split  | \# Images | + (min) | + (max) | + (avg) | + (med) | - (min) | - (max) | - (avg) | - (med) |
@@ -23,9 +23,9 @@ An overview of positive and negative labels in terms of minimum per image, maxim
 
 <table>
   <tr>
-    <td><img src="./assets/pos.png" alt="Positive Samples"></td>
-    <td><img src="./assets/neg.png" alt="Negative Samples"></td>
-    <td><img src="./assets/unk.png" alt="Unknown Samples"></td>
+    <td><img src="./assets/pos-1.png" alt="Positive Samples"></td>
+    <td><img src="./assets/neg-1.png" alt="Negative Samples"></td>
+    <td><img src="./assets/unk-1.png" alt="Unknown Samples"></td>
   </tr>
 </table>
 
@@ -34,13 +34,14 @@ An overview of positive and negative labels in terms of minimum per image, maxim
 | Fully-labeled    |  38,975  |  45.75%  |
 | At least one box |  45,178  |  53.03%  |
 | Any labels       |  85,193  |   100%   |
+
 Training set annotation breakdown.
 
 ## Evaluation
 
 We evaluate at the 3-second-window level, meaning each image in the test set is evaluated separately. Our primary metric is mean average precision (mAP): mAP: AP is computed for each class separately and then averaged. 
 
-## Dataset Organization (Modified from Appendix A.2)
+## <a name="organization"></a> Dataset Organization (Modified from Appendix A.2)
 
 We organize the ML48S by images in sets which come from recordings, which we also call clips (`clips.json`) and assets (`assets.json`), respectively. 
 
