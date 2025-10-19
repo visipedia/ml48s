@@ -95,3 +95,7 @@ Box metadata is given in detail below:
 | `species_code` | 6-letter-code                       | The species which this vocalization belongs to |
 | `status`       | `"passive"`, `"active"`, `"ignore"` | Species prevalence in the clip                 |
 | `bbox`         | `[0, 1]^4`                          | Box coordinates `[xmin, ymin, xmax, ymax]`     |
+
+## Pre-trained Models and Training Code
+
+For SPML pretrained models and training code, see https://github.com/cvl-umass/l48-benchmarking. 
