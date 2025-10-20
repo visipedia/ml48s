@@ -10,6 +10,9 @@
 
 The data can be downloaded [here](https://msid-ml48s.s3.amazonaws.com/v0/ml48s.tar.gz). For information about the data format, see the [dataset organization section](#organization).
 
+## Terms of Use
+By downloading this dataset you agree to terms in [TOU.pdf](./TOU.pdf)
+
 ## Dataset Details
 | Split  | \# Images | + (min) | + (max) | + (avg) | + (med) | - (min) | - (max) | - (avg) | - (med) |
 | :---   | :---      | :---    | :---    | :---    | :---    | :---    | :---    | :---    | :---    |
@@ -39,7 +42,7 @@ Training set annotation breakdown.
 
 ## Evaluation
 
-We evaluate at the 3-second-window level, meaning each image in the test set is evaluated separately. Our primary metric is mean average precision (mAP): mAP: AP is computed for each class separately and then averaged. 
+We evaluate at the 3-second-window level, meaning each image in the test set is evaluated separately. Our primary metric is mean average precision (mAP): mAP: AP is computed for each class separately and then averaged. We evaluate on fully-annotated images in the test set only. We recommend using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html) to calculate this score. 
 
 ## <a name="organization"></a> Dataset Organization (Modified from Appendix A.2)
 
@@ -50,7 +53,20 @@ Each asset has its own directory where each clip is enumerated sequentially in t
 
 ### Asset Metadata
 
-Each asset has associated metadata which we summarize in the table below and also explain in detail below.
+Each asset has associated metadata which we summarize in the table and also explain in detail below.
+
+```
+{
+  "id": int,
+  "split": str,
+  "target_species_code": str,
+  "possible_species_codes": [str],
+  "observed_species_codes": [str],
+  "present_species_codes": [str],
+  "unknown_species_codes": [str],
+  "absent_species_codes": [str]
+}
+```
 
 | Field                    | Possible Values   | Description                                       |
 | ------------------------ | ----------------- | ------------------------------------------------- |
@@ -70,6 +86,28 @@ Assets also contain compiled lists of positives, negatives, and unknowns, where 
 Assets also contain two additional fields, possible species given by geographic priors and observed species within the associated checklist. Using the location and time of year each recording was taken, we are able to generate a list of possible species based on species ranges. Though this list does not provide positive labels, absence of a species on this list implies a negative label for that species across the entire recording. This logic also applies for observed species within the associated checklist. Any species present in the recording should also be reported in the associated checklist, so species not on the checklist should have negative labels for the recording. The negative labels generated through checklist data is a superset of the negative labels generated from geographical priors. Hence, geographical priors and checklist data provide two additional levels of weak supervision which falls between SPML and full-labels. We apply negative labels from geographical and range priors to the clip level, even for unlabeled data.
 
 ### Clip Metadata
+
+```
+{
+  "id": int,
+  "asset_id": int,
+  "clip_order": int,
+  "file_path": str,
+  "width": int,
+  "height": int,
+  "present_species_codes": [str],
+  "unknown_species_codes": [str],
+  "absent_species_codes": [str],
+  "boxes": [box]
+}
+
+box{
+  "id": int,
+  "species_code": str,
+  "status": str,
+  "bbox": [float]
+}
+```
 
 | Field                   | Possible Values   | Description                                            |
 | ----------------------- | ----------------- | ------------------------------------------------------ |
