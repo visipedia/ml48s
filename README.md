@@ -6,6 +6,8 @@
   <em>Figure 1: The Merlin L48 Spectrogram (L48) dataset spans the Lower 48 states of the US with bird recordings throughout the year. Each recording is associated with a target species (solid) but also contains background species (dashed), giving rise to a natural single-positive, multi-label (SPML) task. L48 stands out among similar datasets as being at country-wide, year-round scale while still maintaining high-quality bounding box annotations.</em>
 </p>
 
+[Paper](https://arxiv.org/abs/2511.00252)
+
 ## Data Download
 
 The data can be downloaded [here](https://msid-ml48s.s3.amazonaws.com/v0/ml48s.tar.gz). For information about the data format, see the [dataset organization section](#organization).
