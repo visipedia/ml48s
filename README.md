@@ -139,3 +139,12 @@ Box metadata is given in detail below:
 ## Pre-trained Models and Training Code
 
 For SPML pretrained models and training code, see https://github.com/cvl-umass/l48-benchmarking. 
+
+## Citation
+```
+@inproceedings{sunmerlin,
+   title={Merlin L48 Spectrogram Dataset},
+   author={Sun, Aaron and Maji, Subhransu and Van Horn, Grant},
+   booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track}
+}
+```
